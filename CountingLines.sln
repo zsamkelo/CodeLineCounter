@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountingLines", "CountingLines\CountingLines.csproj", "{DE2EF9C4-9805-4BEC-961B-1B982933D81F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountingLinesTest", "CountingLinesTest\CountingLinesTest.csproj", "{EAC178BD-1C03-43A7-B9B5-DF9C46C553A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE2EF9C4-9805-4BEC-961B-1B982933D81F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE2EF9C4-9805-4BEC-961B-1B982933D81F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE2EF9C4-9805-4BEC-961B-1B982933D81F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE2EF9C4-9805-4BEC-961B-1B982933D81F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC178BD-1C03-43A7-B9B5-DF9C46C553A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC178BD-1C03-43A7-B9B5-DF9C46C553A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC178BD-1C03-43A7-B9B5-DF9C46C553A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC178BD-1C03-43A7-B9B5-DF9C46C553A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51ACCEF4-1FE2-4EE6-83FD-A769B1AA0994}
+	EndGlobalSection
+EndGlobal
