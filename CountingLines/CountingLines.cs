@@ -3,8 +3,13 @@ using System.Linq;
 
 namespace CountingLines
 {
-    public class LineCounter
-    {
+  public interface ILineCounter
+  {
+    int Count(string code);
+  }
+
+  public class LineCounter : ILineCounter
+  {
         public int Count(string code)
         {
             if (string.IsNullOrEmpty(code))
@@ -25,15 +30,18 @@ namespace CountingLines
                 {
                     continue;
                 }
+
                 if (IsEndOfMultiLineCommnet(trimmedLine))
                 {
                     insideComment = false;
                     continue;
                 } 
+
                 if (IsEndOfMultiLineCommentInTheMendleOfCode(trimmedLine))
                 {
                     insideComment = false;
                 } 
+
                 if (insideComment)
                 {
                     continue;
@@ -62,7 +70,7 @@ namespace CountingLines
 
         private static bool IsEndOfMultiLineCommnet(string line)
         {
-            return line.IndexOf("*/")==line.Length - 2;
+            return line.IndexOf("*/") >= 0 && line.IndexOf("*/")==line.Length - 2;
         }
 
         private static bool IsMultiLineCommentAfterLineOfCode(string line)

@@ -1,12 +1,21 @@
 ﻿using System;
+using System.IO;
 
 namespace CountingLines
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+      var filePath = @"E:\Chillisoft\DeliberatePractice\ironpdf\ironpdf\Program.cs";
+
+      var fileCounter = new FileLineCounter(
+        new FileSystemAccess(),
+        new LineCounter()
+      );
+
+      var lines = fileCounter.Count(filePath);
+      Console.WriteLine($"Number of lines in file = {lines}");
     }
+  }
 }
