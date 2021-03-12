@@ -70,8 +70,8 @@ namespace CountingLinesTest
       ILineCounter lineCounter = null
     )
     {
-      fileSystem ??= Substitute.For<IFileSystemAccess>();
-      lineCounter ??= Substitute.For<ILineCounter>();
+      fileSystem ??= new FakeFileSystemAccessBuilder().Build();
+      lineCounter ??= new FakeLineCounterBuilder().Build();
 
       return new FileLineCounter(fileSystem, lineCounter);
     }

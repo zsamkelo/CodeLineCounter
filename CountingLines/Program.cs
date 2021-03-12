@@ -7,15 +7,16 @@ namespace CountingLines
   {
     static void Main(string[] args)
     {
-      var filePath = @"E:\Chillisoft\DeliberatePractice\ironpdf\ironpdf\Program.cs";
 
-      var fileCounter = new FileLineCounter(
-        new FileSystemAccess(),
-        new LineCounter()
+      var system = new FileSystemAccess();
+      var counter = new DirectoryLineCounter(
+        system,
+        new FileLineCounter(system, new LineCounter())
       );
 
-      var lines = fileCounter.Count(filePath);
+      var lines = counter.Count(@"E:\Chillisoft\DeliberatePractice\game-of-life\GameOfLife");
       Console.WriteLine($"Number of lines in file = {lines}");
+
     }
   }
 }

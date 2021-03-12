@@ -1,7 +1,12 @@
 ﻿
 namespace CountingLines
 {
-  public class FileLineCounter
+  public interface IFileLineCounter
+  {
+    int Count(string filePath);
+  }
+
+  public class FileLineCounter : IFileLineCounter
   {
     private readonly IFileSystemAccess _fileSystem;
     private readonly ILineCounter _lineCounter;
