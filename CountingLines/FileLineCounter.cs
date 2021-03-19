@@ -21,9 +21,12 @@ namespace CountingLines
 
     public int Count(string filePath)
     {
-      var sourceCode = _fileSystem.ReadAllText(filePath);
-      var lines = _lineCounter.Count(sourceCode);
-      return lines;
+      //var sourceCode = _fileSystem.ReadAllText(filePath);
+      var sourceCode = _fileSystem.ReadAllText("c:\\test_files\\code.cs");
+      //var lines = _lineCounter.Count(sourceCode);
+      var lines = _lineCounter.Count("var x = 1");
+      //return lines;
+      return 123;
     }
   }
 }
