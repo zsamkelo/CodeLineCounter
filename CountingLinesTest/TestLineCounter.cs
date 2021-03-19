@@ -6,8 +6,12 @@ namespace CountingLinesTest
     public class TestLineCounter
     {
         [TestCase("/**/var ha = 123;/**/",1)]
-        [TestCase("/**/var sameAsAboveButJustInCase = 123;",1)]
-        public void BoomHeadshot(string code, int expected)
+        [TestCase("/*asdas*/var ha = 123;/*sadasd*/",1)]
+        [TestCase("/*asdas*/var ha = 123;/*sadasd*/var ha = 123;/*5344345*/", 1)]
+        [TestCase("/**/var ha = 123;/*sadasd*/",1)]
+        [TestCase("/*dsssdfsdsdf*/var sameAsAboveButJustInCase = 123;",1)]
+        [TestCase("/**/var sameAsAbove;/**/ButJustInCase = 123;",1)]
+        public void GivenManyMultiLineCommentsOnASingleLine_ShouldReturnOne(string code, int expected)
         {
             var linecounter = CreateLineCounter();
             var actual = linecounter.Count(code);
@@ -94,8 +98,19 @@ x = 1;
 //z = 3;
 y = 2;");
             Assert.AreEqual(2, actual);
-        }        
-        
+        }
+
+        [Test]
+        public void GivenThreeLinesOfCodeWithSecondLineEndingWithACommentShouldReturn3()
+        {
+            var linecounter = CreateLineCounter();
+            var actual = linecounter.Count(@"
+x = 1;
+e = 9;//z = 3;
+y = 2;");
+            Assert.AreEqual(3, actual);
+        }
+
         [Test]
         public void GivenThreeIndentedLinesOfCodeWithOneLineCommentedOutShouldReturnTwo()
         {

@@ -26,9 +26,15 @@ namespace CountingLines
             foreach (var line in lines)
             {
                 var trimmedLine = line.Trim();
+                
                 if (IsSingleLineComment(trimmedLine))
                 {
                     continue;
+                }
+
+                if (IfSingleLineContainsMultiLineComment(trimmedLine))
+                {
+                    trimmedLine = RemoveMultiLineCommentFromLine(trimmedLine);
                 }
 
                 if (IsEndOfMultiLineCommnet(trimmedLine))
@@ -61,6 +67,26 @@ namespace CountingLines
             }
 
             return counter;
+        }
+
+        private static string RemoveMultiLineCommentFromLine(string trimmedLine)
+        {
+            var numberOfComments = trimmedLine.Count(f => f == '/') / 2;
+            for (int i = 0; i < numberOfComments; i++)
+            {
+                var startOfComment = trimmedLine.IndexOf("/*");
+                var endOfComment = trimmedLine.IndexOf("*/");
+                if (startOfComment < 0) continue;
+                string strToRemove = trimmedLine.Substring(startOfComment, endOfComment - startOfComment + 2);
+                trimmedLine = trimmedLine.Replace(strToRemove, "");
+            }
+
+            return trimmedLine;
+        }
+
+        private static bool IfSingleLineContainsMultiLineComment(string trimmedLine)
+        {
+            return trimmedLine.Contains("/*") && trimmedLine.Contains("*/");
         }
 
         private static bool IsEndOfMultiLineCommentInTheMendleOfCode(string line)
