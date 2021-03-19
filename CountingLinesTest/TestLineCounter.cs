@@ -5,6 +5,15 @@ namespace CountingLinesTest
 {
     public class TestLineCounter
     {
+        [TestCase("/**/var ha = 123;/**/",1)]
+        [TestCase("/**/var sameAsAboveButJustInCase = 123;",1)]
+        public void BoomHeadshot(string code, int expected)
+        {
+            var linecounter = CreateLineCounter();
+            var actual = linecounter.Count(code);
+            Assert.AreEqual(expected, actual);
+        }
+
         [Test]
         public void GivenEmptyStringShouldReturnZero()
         {
