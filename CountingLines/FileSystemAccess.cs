@@ -12,13 +12,11 @@ namespace CountingLines
   {
     public string ReadAllText(string filePath)
     {
-      //return File.ReadAllText(filePath);
-      return File.ReadAllText("");
+      return File.ReadAllText(filePath);
     }
     public string[] GetFilesInFolder(string folderPath, string searchPattern)
     {
-      //return Directory.GetFiles(folderPath, searchPattern);
-      return Directory.GetFiles("", "");
+      return Directory.GetFiles(folderPath, searchPattern, SearchOption.AllDirectories);
     }
   }
 }

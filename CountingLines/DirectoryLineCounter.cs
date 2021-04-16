@@ -15,19 +15,15 @@
 
     public int Count(string folderPath)
     {
-      //var totalLines = 0;
-      //var files = _fileSystem.GetFilesInFolder(folderPath, "*.cs");
-      _fileSystem.GetFilesInFolder("c:\\test_files\\", "*.cs");
-      
-      //foreach (var file in files)
-      //{
-      //  totalLines += _fileLineCounter.Count(file);
-      //}
-      _fileLineCounter.Count("c:\\test_files\\program.cs");
-      _fileLineCounter.Count("c:\\test_files\\logic.cs");
+      var totalLines = 0;
+      var files = _fileSystem.GetFilesInFolder(folderPath, "*.cs");
 
-      //return totalLines;
-      return 17;
+      foreach (var file in files)
+      {
+        totalLines += _fileLineCounter.Count(file);
+      }
+
+      return totalLines;
     }
   }
 }
